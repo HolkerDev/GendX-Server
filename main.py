@@ -15,7 +15,7 @@ from PIL import Image
 from keras import backend as K
 
 CASCADE_PATH = 'haarcascade_frontalface_default.xml'
-GENDX_PATH = 'models/weights.06-0.35.hdf5'
+GENDX_PATH = 'models/20.loss.epo-67-v_acc-0.9000-v_loss-0.2628.h5'
 
 PASS = '1111'
 
@@ -67,7 +67,7 @@ def recognize_one_obj():
 
     # preparing response
     response = {
-        "accuracy": "85%",
+        "accuracy": "90%",
         "format": "{}".format(img.size),
         "gender": gendX.predict(image_path)
     }
@@ -107,7 +107,7 @@ def recognize_with_open_cv():
         people_json.append({"gender": gendX.predict(faces_arr[i])})
 
     # json response
-    response = {"accuracy": "85%",
+    response = {"accuracy": "90%",
                 "format": "{}".format(img.size),
                 "people": people_json}
     # increase counter for next file path
@@ -155,4 +155,4 @@ def shutdown():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0',port=5000)

@@ -3,7 +3,7 @@ import os
 
 os.environ['KERAS_BACKEND'] = 'theano'
 os.environ['THEANO_FLAGS'] = 'mode=FAST_RUN, device=cpu, optimizer=fast_compile'
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # see issue #152
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 from keras.models import load_model
 from keras.preprocessing import image
@@ -18,8 +18,10 @@ class GendXModel():
         result = self.model.predict(pre_image)
         if result[0] == 0:
             return 'man'
-        else:
+        elif result[0] == 1:
             return 'woman'
+        else:
+            return 'unknown'
 
     def __convert_image(self, path):
         files = image.load_img(path, target_size=(64, 64))

@@ -20,12 +20,10 @@ class OpenCV():
             centery = y + h / 2
             nx = int(centerx - r)
             ny = int(centery - r)
-            nr = int(r * 2)
+            nr = int(r)
             count += 1
-            face_img = image[ny:ny + nr, nx:nx + nr]
+            face_img = image[y - int(nr // 1.11):y + h + nr, x - nr:x + w + nr]
             path = 'cropped_images/image' + str(count) + '.jpg'
             cv2.imwrite(path, face_img)
             faces_arr.append(path)
         return faces_arr
-
-

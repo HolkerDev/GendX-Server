@@ -6,5 +6,20 @@
 </head>
 <body>
 <h1>OpenCV</h1>
+<b>Request</b>:
+/api/recognize_with_opencv?image={$base64_encoded_image}
+<b>Response</b>:
+    {
+    "accuracy" : "90%",
+    "format" : "(120,360)",
+    "people" : [
+    {
+    "gender" : "man"
+    },
+    {
+    "gender" : "woman"
+    }
+    ]
+    }
 </body>
 </html>
